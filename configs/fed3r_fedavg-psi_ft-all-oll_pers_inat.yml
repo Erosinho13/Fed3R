@@ -1,0 +1,47 @@
+device: 0
+seed: 42
+wandb: true
+temperature: 0.1
+
+log_train_every_n_rounds: 1
+log_test_every_n_rounds: 100
+skip_first_log: false
+
+optimizer: sgd
+weight_decay: 4e-5
+lr: 0.01
+scheduler: const
+warmup_fraction: 0.1
+lr_decay_factor: 1.0
+lr_decay_every: 100
+
+train_batch_size: 64
+eval_batch_size: 128
+
+max_num_clients_for_personalization: 100000
+max_num_finetune_updates: 100000
+pretrained_model_path: ./saved_models/fed3r_fedavg-psi_pers_inat/checkpoint.pt
+num_epochs_personalization: 25
+stateless_clients: false
+personalize_on_client: all
+layers_to_finetune: null
+client_var_l2_reg_coef: 0.0
+client_var_prox_to_init: false
+oll: true
+
+validation_mode: false
+data_dir: DATASETS/
+dataset: inaturalist
+max_num_elements_per_client: 1000
+
+train_all_clients: false
+max_num_clients_for_logging: 2000
+
+force_restart: false
+
+model_name: mobilenetv2
+max_sequence_length: 20
+arch_size: tiny
+model_dropout: 0
+max_grad_norm: 0.25
+clip_grad_norm: false

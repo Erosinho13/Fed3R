@@ -1,0 +1,58 @@
+device: 0
+seed: 42
+wandb: true
+
+log_train_every_n_rounds: 1
+log_test_every_n_rounds: 100
+skip_first_log: false
+
+client_optimizer: sgd
+client_weight_decay: 4e-5
+client_lr: 0.1
+client_scheduler: const
+local_warmup_fraction: 0.1
+client_lr_decay_factor: 1.0
+client_lr_decay_every: 100
+
+server_optimizer: sgd
+global_scheduler: const
+server_lr: 1.0
+server_momentum: 0.0
+global_warmup_fraction: 0.1
+global_lr_decay_factor: 1.0
+global_lr_decay_every: 100
+
+train_batch_size: 64
+eval_batch_size: 128
+
+num_communication_rounds: 3000
+num_clients_per_round: 10
+num_local_epochs: 5
+
+pfl_algo: fedavg
+stateless_clients: false
+personalize_on_client: null
+layers_to_finetune: null
+save_client_params_to_disk: false
+client_var_l2_reg_coef: 0.0
+client_var_prox_to_init: false
+max_num_pfl_updates: 1000
+pfedme_l2_reg_coef: 1e-6
+
+pretrained_model_path: null
+validation_mode: false
+data_dir: DATASETS/
+dataset: inaturalist
+max_num_elements_per_client: 1000
+
+train_all_clients: false
+max_num_clients_for_logging: 2000
+
+force_restart: false
+
+model_name: mobilenetv2
+max_sequence_length: 20
+arch_size: tiny
+model_dropout: 0
+max_grad_norm: 0.25
+clip_grad_norm: false
